@@ -54,23 +54,23 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4 text-white">Services</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/services/web-development" className="text-secondary-300 hover:text-primary-400 transition-colors">
-                  Web Development
+                <Link href="/smart-home" className="text-secondary-300 hover:text-primary-400 transition-colors">
+                  Smart Home Solutions
                 </Link>
               </li>
               <li>
-                <Link href="/services/mobile-apps" className="text-secondary-300 hover:text-primary-400 transition-colors">
-                  Mobile Apps
+                <Link href="/smart-office" className="text-secondary-300 hover:text-primary-400 transition-colors">
+                  Smart Office Solutions
                 </Link>
               </li>
               <li>
-                <Link href="/services/digital-marketing" className="text-secondary-300 hover:text-primary-400 transition-colors">
-                  Digital Marketing
+                <Link href="/smart-home#security" className="text-secondary-300 hover:text-primary-400 transition-colors">
+                  Security Systems
                 </Link>
               </li>
               <li>
-                <Link href="/services/consulting" className="text-secondary-300 hover:text-primary-400 transition-colors">
-                  Consulting
+                <Link href="/smart-home#automation" className="text-secondary-300 hover:text-primary-400 transition-colors">
+                  Home Automation
                 </Link>
               </li>
             </ul>
