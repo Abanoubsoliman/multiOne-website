@@ -82,7 +82,7 @@ export default function SmartHome() {
       {/* Hero Section */}
       <section className="relative h-[70vh] flex items-center justify-center">
         <Image
-          src="/images/smart-home"
+          src="/images/smart-home.jpeg"
           alt="Smart Home"
           fill
           className="object-cover"
