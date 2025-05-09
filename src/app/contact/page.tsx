@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import Link from 'next/link';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -25,8 +26,8 @@ export default function Contact() {
 
     try {
       await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your service ID
-        'YOUR_TEMPLATE_ID', // Replace with your template ID
+        'service_multione', // Service ID
+        'template_multione', // Template ID
         {
           from_name: formData.name,
           from_email: formData.email,
@@ -34,7 +35,7 @@ export default function Contact() {
           subject: formData.subject,
           message: formData.message,
         },
-        'YOUR_PUBLIC_KEY' // Replace with your public key
+        'public_key_multione' // Public Key
       );
 
       setStatus({
@@ -75,11 +76,11 @@ export default function Contact() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+      <section className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl font-bold mb-6">Contact Us</h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+            <p className="text-xl text-primary-100 max-w-3xl mx-auto">
               Get in touch with us to discuss your project or ask any questions.
             </p>
           </div>
@@ -91,8 +92,8 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
+            <div>
+              <h2 className="text-2xl font-bold mb-6 text-secondary-900">Send us a Message</h2>
               {status.message && (
                 <div
                   className={`p-4 mb-6 rounded-md ${
@@ -110,7 +111,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-sm font-medium text-secondary-700 mb-1"
                   >
                     Name
                   </label>
@@ -121,14 +122,14 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-2 border border-secondary-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-sm font-medium text-secondary-700 mb-1"
                   >
                     Email
                   </label>
@@ -139,14 +140,14 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-2 border border-secondary-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-sm font-medium text-secondary-700 mb-1"
                   >
                     Phone
                   </label>
@@ -156,14 +157,14 @@ export default function Contact() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-2 border border-secondary-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="subject"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-sm font-medium text-secondary-700 mb-1"
                   >
                     Subject
                   </label>
@@ -173,7 +174,7 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-2 border border-secondary-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   >
                     <option value="">Select a subject</option>
                     <option value="general">General Inquiry</option>
@@ -186,7 +187,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-sm font-medium text-secondary-700 mb-1"
                   >
                     Message
                   </label>
@@ -197,14 +198,14 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-2 border border-secondary-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
                   disabled={status.loading}
-                  className="w-full bg-blue-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700 transition-colors disabled:bg-blue-400"
+                  className="w-full bg-primary-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-primary-700 transition-colors disabled:bg-primary-400"
                 >
                   {status.loading ? 'Sending...' : 'Send Message'}
                 </button>
@@ -218,7 +219,7 @@ export default function Contact() {
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <svg
-                      className="h-6 w-6 text-blue-600 mt-1 mr-3"
+                      className="h-6 w-6 text-primary-600 mt-1 mr-3"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -248,7 +249,7 @@ export default function Contact() {
 
                   <div className="flex items-start">
                     <svg
-                      className="h-6 w-6 text-blue-600 mt-1 mr-3"
+                      className="h-6 w-6 text-primary-600 mt-1 mr-3"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -268,7 +269,7 @@ export default function Contact() {
 
                   <div className="flex items-start">
                     <svg
-                      className="h-6 w-6 text-blue-600 mt-1 mr-3"
+                      className="h-6 w-6 text-primary-600 mt-1 mr-3"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -291,18 +292,11 @@ export default function Contact() {
               {/* Business Hours */}
               <div className="bg-white rounded-lg shadow-lg p-8">
                 <h2 className="text-2xl font-bold mb-6">Business Hours</h2>
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Monday - Friday</span>
-                    <span className="font-semibold">9:00 AM - 6:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Saturday</span>
-                    <span className="font-semibold">10:00 AM - 4:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Sunday</span>
-                    <span className="font-semibold">Closed</span>
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <p className="text-secondary-600">Monday - Thursday: 9:00 AM - 6:00 PM</p>
+                    <p className="text-secondary-600">Saturday: 10:00 AM - 4:00 PM</p>
+                    <p className="text-secondary-600">Friday: Closed</p>
                   </div>
                 </div>
               </div>

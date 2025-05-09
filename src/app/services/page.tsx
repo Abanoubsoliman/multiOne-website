@@ -5,11 +5,11 @@ export default function Services() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+      <section className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl font-bold mb-6">Our Services</h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+            <p className="text-xl text-primary-100 max-w-3xl mx-auto">
               Comprehensive digital solutions to help your business thrive in the modern world.
             </p>
           </div>
@@ -19,7 +19,7 @@ export default function Services() {
       {/* Services Grid */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <div
                 key={index}
@@ -34,13 +34,13 @@ export default function Services() {
                   />
                 </div>
                 <div className="p-8">
-                  <h2 className="text-2xl font-bold mb-4">{service.title}</h2>
-                  <p className="text-gray-600 mb-6">{service.description}</p>
+                  <h2 className="text-2xl font-bold mb-4 text-secondary-900">{service.title}</h2>
+                  <p className="text-secondary-600 mb-6">{service.description}</p>
                   <ul className="space-y-3 mb-6">
                     {service.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start">
                         <svg
-                          className="h-6 w-6 text-blue-600 mr-2 flex-shrink-0"
+                          className="h-6 w-6 text-primary-600 mr-2 flex-shrink-0"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -52,13 +52,13 @@ export default function Services() {
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span>{feature}</span>
+                        <span className="text-secondary-600">{feature}</span>
                       </li>
                     ))}
                   </ul>
                   <Link
                     href={`/services/${service.slug}`}
-                    className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors"
+                    className="inline-block bg-primary-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-700 transition-colors"
                   >
                     Learn More
                   </Link>
@@ -70,18 +70,18 @@ export default function Services() {
       </section>
 
       {/* Process Section */}
-      <section className="bg-gray-50 py-20">
+      <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Process</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">Our Process</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {process.map((step, index) => (
               <div
                 key={index}
-                className="text-center p-6 bg-white rounded-lg shadow-lg"
+                className="bg-white/10 backdrop-blur-lg p-8 rounded-lg hover:bg-white/20 transition-all text-white text-center"
               >
-                <div className="text-blue-600 mb-4">{step.icon}</div>
+                <div className="text-white mb-4">{step.icon}</div>
                 <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
+                <p className="text-white/90">{step.description}</p>
               </div>
             ))}
           </div>
@@ -91,18 +91,18 @@ export default function Services() {
       {/* CTA Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-blue-600 rounded-2xl overflow-hidden">
+          <div className="bg-primary-600 rounded-2xl overflow-hidden">
             <div className="px-6 py-12 sm:px-12 lg:px-16">
               <div className="text-center">
                 <h2 className="text-3xl font-bold text-white mb-4">
                   Ready to Transform Your Business?
                 </h2>
-                <p className="text-xl text-blue-100 mb-8">
+                <p className="text-xl text-primary-100 mb-8">
                   Let's discuss how we can help you achieve your goals.
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-block bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors"
+                  className="inline-block bg-white text-primary-600 px-8 py-3 rounded-full font-semibold hover:bg-primary-50 transition-colors"
                 >
                   Get Started
                 </Link>
@@ -117,59 +117,59 @@ export default function Services() {
 
 const services = [
   {
-    title: "Web Development",
+    title: "Smart Home Solutions",
     description:
-      "Custom websites and web applications built with modern technologies to help your business grow online.",
-    image: "/services/web-development.jpg",
-    slug: "web-development",
+      "Complete smart home automation systems that transform your living space into a connected, secure, and energy-efficient environment.",
+    image: "https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    slug: "smart-home",
     features: [
-      "Responsive Design",
-      "Custom CMS Development",
-      "E-commerce Solutions",
-      "Web Application Development",
-      "API Integration",
+      "Smart Security Systems",
+      "Automated Lighting Control",
+      "Climate Control",
+      "Smart Locks & Access",
+      "Mobile App Control",
     ],
   },
   {
-    title: "Mobile App Development",
+    title: "Smart Office Solutions",
     description:
-      "Native and cross-platform mobile applications that provide seamless user experiences across all devices.",
-    image: "/services/mobile-apps.jpg",
-    slug: "mobile-apps",
+      "Integrated smart office systems that enhance productivity, security, and energy efficiency in your workplace.",
+    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
+    slug: "smart-office",
     features: [
-      "iOS Development",
-      "Android Development",
-      "Cross-platform Solutions",
-      "App Store Optimization",
-      "Push Notifications",
+      "Access Control Systems",
+      "Surveillance & Security",
+      "Meeting Room Automation",
+      "Smart Lighting",
+      "Energy Management",
     ],
   },
   {
-    title: "Digital Marketing",
+    title: "Smart Building Solutions",
     description:
-      "Strategic digital marketing solutions to increase your online presence and drive business growth.",
-    image: "/services/digital-marketing.jpg",
-    slug: "digital-marketing",
+      "Comprehensive smart building solutions for residential complexes, hotels, and commercial properties.",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    slug: "smart-building",
     features: [
-      "SEO Optimization",
-      "Social Media Marketing",
-      "Content Marketing",
-      "Email Marketing",
-      "Analytics & Reporting",
+      "Building Security",
+      "Gate & Access Control",
+      "Common Area Automation",
+      "Energy Management",
+      "Resident/Staff Apps",
     ],
   },
   {
-    title: "IT Consulting",
+    title: "Smart Retail Solutions",
     description:
-      "Expert guidance to help you make informed decisions about your technology infrastructure and strategy.",
-    image: "/services/consulting.jpg",
-    slug: "consulting",
+      "Innovative smart retail solutions that enhance customer experience and optimize store operations.",
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    slug: "smart-retail",
     features: [
-      "Technology Assessment",
-      "Digital Transformation",
-      "Cloud Solutions",
-      "Security Consulting",
-      "IT Strategy",
+      "Smart Lighting",
+      "Security Systems",
+      "Customer Analytics",
+      "Energy Management",
+      "Store Automation",
     ],
   },
 ];
@@ -191,8 +191,8 @@ const process = [
         />
       </svg>
     ),
-    title: "Discovery",
-    description: "We learn about your business goals and requirements.",
+    title: "Consultation",
+    description: "We understand your needs and requirements through detailed consultation.",
   },
   {
     icon: (
@@ -211,7 +211,7 @@ const process = [
       </svg>
     ),
     title: "Planning",
-    description: "We create a detailed roadmap for your project.",
+    description: "We design a customized solution that meets your specific requirements.",
   },
   {
     icon: (
@@ -229,8 +229,8 @@ const process = [
         />
       </svg>
     ),
-    title: "Development",
-    description: "We build your solution with best practices.",
+    title: "Installation",
+    description: "Our expert team installs and configures your smart solution.",
   },
   {
     icon: (
@@ -248,7 +248,7 @@ const process = [
         />
       </svg>
     ),
-    title: "Launch",
-    description: "We deploy and monitor your solution.",
+    title: "Support",
+    description: "We provide ongoing support and maintenance for your system.",
   },
 ]; 
