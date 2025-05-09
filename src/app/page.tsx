@@ -14,7 +14,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center justify-center">
         <Image
-          src="/images/smart-home.jpeg"
+          src="/images/smart-home"
           alt="Smart Home"
           fill
           className="object-cover"
@@ -109,7 +109,7 @@ export default function Home() {
             <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all">
               <div className="relative h-64">
                 <Image
-                  src="/images/smart-home.jpeg"
+                  src="/images/smart-home"
                   alt="Smart Home"
                   fill
                   className="object-cover"
