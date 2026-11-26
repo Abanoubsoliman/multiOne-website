@@ -14,14 +14,14 @@ export default function Navbar() {
   useEffect(() => { const f = () => { setScrolled(window.scrollY > 30); const h = document.documentElement.scrollHeight - window.innerHeight; setProg(h > 0 ? window.scrollY / h : 0); }; f(); window.addEventListener('scroll', f); return () => window.removeEventListener('scroll', f); }, []);
   useEffect(() => setOpen(false), [path]);
   const links = [
-    ['/smart-home', t.nav.smartHome], ['/smart-office', t.nav.smartOffice], ['/services', t.nav.services],
-    ['/portfolio', t.nav.portfolio], ['/about', t.nav.about],
+    ['/smart-home', t.nav.smartHome], ['/smart-office', t.nav.smartOffice], ['/services', t.nav.services], ['/#demo', 'Demo'],
+    ['/about', t.nav.about],
   ];
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled || open ? 'bg-bg0/85 backdrop-blur-xl border-b border-line' : 'theme-dark'}`}>
+    <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled || open ? 'bg-bg0/80 backdrop-blur-xl border-b border-line' : ''} theme-dark`}>
       <div className="container-x flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-3" aria-label="MultiOne">
-          <Image src={scrolled || open ? "/images/logo-mark.png" : "/images/logo-mark-white.png"} alt="" width={44} height={34} className="h-8 w-auto" priority />
+          <Image src="/images/logo-mark-white.png" alt="" width={44} height={34} className="h-8 w-auto" priority />
           <span className="font-display text-lg font-bold leading-none tracking-tight">THE MULTI<span className="font-light">ONE</span></span>
         </Link>
         <nav className="hidden items-center gap-8 lg:flex">

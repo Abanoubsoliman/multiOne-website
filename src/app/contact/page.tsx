@@ -33,16 +33,16 @@ export default function Contact() {
   return (
     <>
       <PageHero eyebrow={c.eyebrow} title={c.title} />
-      <section className="container-x grid gap-12 pb-28 lg:grid-cols-5">
+      <section className="container-x grid gap-12 pt-16 pb-28 lg:grid-cols-5">
         <Reveal className="lg:col-span-2">
           <div className="space-y-8">
-            {[[c.phone, SITE.phone, SITE.phoneHref], [c.email, SITE.email, `mailto:${SITE.email}`], [c.address, lang === 'ar' ? SITE.addressAr : SITE.address, undefined]].map(([l, v, h]) => (
+            {[[`${c.phone} · ${c.cairo}`, SITE.phone, SITE.phoneHref], [`${c.phone} · ${c.dubai}`, SITE.dubaiPhone, SITE.dubaiPhoneHref], [c.email, SITE.email, `mailto:${SITE.email}`], [`${c.address} · ${c.cairo}`, lang === 'ar' ? SITE.addressAr : SITE.address, undefined], ['Instagram', '@the_multione_', SITE.instagram]].map(([l, v, h]) => (
               <div key={l as string}>
                 <div className="eyebrow mb-2">{l}</div>
                 {h ? <a href={h as string} className="text-xl hover:text-volt" dir="ltr">{v}</a> : <p className="text-xl">{v}</p>}
               </div>
             ))}
-            <p className="text-fg/50">{c.hours}</p>
+            <p className="text-fg/50">{c.hours}. {c.dubai}: {c.dubaiAddr}</p>
           </div>
         </Reveal>
         <Reveal delay={150} className="lg:col-span-3">

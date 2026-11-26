@@ -1,7 +1,7 @@
 export type Lang = 'en' | 'ar';
 
 const en = {
-  nav: { home: 'Home', smartHome: 'Smart Home', smartOffice: 'Smart Office', services: 'Services', portfolio: 'Projects', about: 'About', contact: 'Contact', cta: 'Get a quote' },
+  nav: { home: 'Home', smartHome: 'Smart Home', smartOffice: 'Smart Office', services: 'Services', about: 'About', contact: 'Contact', cta: 'Get a quote' },
   hero: {
     eyebrow: 'KNX · ELV · Smart Building Integrators',
     l1: 'We make buildings',
@@ -96,18 +96,6 @@ const en = {
       { t: 'Support', d: 'We stay after the project goes live.' },
     ],
   },
-  portfolio: {
-    eyebrow: 'Projects', title: 'Selected work.', sub: 'Villas, offices and commercial spaces.',
-    note: 'Sample entries. Real project names and photos will be added.',
-    items: [
-      { t: 'Smart Villa', c: 'Residential', d: 'Full KNX: lighting scenes, climate, shading and security.' },
-      { t: 'Corporate Office', c: 'Office', d: 'Access control, meeting rooms and energy monitoring.' },
-      { t: 'Apartment Building', c: 'Residential', d: 'Gate control, common areas and building security.' },
-      { t: 'Boutique Hotel', c: 'Hospitality', d: 'Guest room control and central management.' },
-      { t: 'Restaurant', c: 'Commercial', d: 'Mood lighting, climate and audio zones.' },
-      { t: 'Retail Store', c: 'Commercial', d: 'Display lighting, security and scheduling.' },
-    ],
-  },
   contact: {
     eyebrow: 'Contact', title: 'Let us talk about your project.',
     name: 'Full name', email: 'Email', phone: 'Phone', subject: 'Subject', message: 'Tell us about the project', send: 'Send message', sending: 'Sending…',
@@ -118,7 +106,7 @@ const en = {
 };
 
 const ar: typeof en = {
-  nav: { home: 'الرئيسية', smartHome: 'البيت الذكي', smartOffice: 'المكتب الذكي', services: 'خدماتنا', portfolio: 'مشاريعنا', about: 'من نحن', contact: 'تواصل معنا', cta: 'اطلب عرض سعر' },
+  nav: { home: 'الرئيسية', smartHome: 'البيت الذكي', smartOffice: 'المكتب الذكي', services: 'خدماتنا', about: 'من نحن', contact: 'تواصل معنا', cta: 'اطلب عرض سعر' },
   hero: {
     eyebrow: 'KNX · ELV · أنظمة المباني الذكية',
     l1: 'بنخلي المباني',
@@ -213,18 +201,6 @@ const ar: typeof en = {
       { t: 'الدعم', d: 'بنفضل معاك بعد التشغيل.' },
     ],
   },
-  portfolio: {
-    eyebrow: 'المشاريع', title: 'من أعمالنا.', sub: 'فلل ومكاتب وأماكن تجارية.',
-    note: 'أمثلة مؤقتة. هتتضاف أسماء وصور المشاريع الحقيقية.',
-    items: [
-      { t: 'فيلا ذكية', c: 'سكني', d: 'KNX كامل: سيناريوهات إضاءة وتكييف وستائر وأمان.' },
-      { t: 'مكتب شركة', c: 'مكاتب', d: 'تحكم في الدخول وغرف اجتماعات ومراقبة طاقة.' },
-      { t: 'عمارة سكنية', c: 'سكني', d: 'تحكم في البوابات والمناطق المشتركة وأمان المبنى.' },
-      { t: 'فندق بوتيك', c: 'ضيافة', d: 'تحكم في غرف النزلاء وإدارة مركزية.' },
-      { t: 'مطعم', c: 'تجاري', d: 'إضاءة أجواء وتكييف ومناطق صوت.' },
-      { t: 'محل تجزئة', c: 'تجاري', d: 'إضاءة عرض وأمان وجدولة.' },
-    ],
-  },
   contact: {
     eyebrow: 'تواصل معنا', title: 'تعالى نتكلم عن مشروعك.',
     name: 'الاسم', email: 'الإيميل', phone: 'الموبايل', subject: 'الموضوع', message: 'احكيلنا عن المشروع', send: 'ابعت الرسالة', sending: 'جاري الإرسال…',
@@ -234,4 +210,5 @@ const ar: typeof en = {
   footer: { tag: 'مباني ذكية، هندسة من القاهرة.', links: 'استكشف', contact: 'تواصل', rights: 'جميع الحقوق محفوظة.', privacy: 'الخصوصية', terms: 'الشروط' },
 };
 
-export const dict = { en, ar };
+import { xen, xar } from './dict-extra';
+export const dict = { en: { ...en, ...xen }, ar: { ...ar, ...xar } };
