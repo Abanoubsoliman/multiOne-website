@@ -8,3 +8,4 @@ Replace each file with a real MultiOne project photo, keeping the same filename,
 - lock-app.jpg     : security / access card
 - office.jpg       : Smart Office hero, portfolio
 - dashboard.jpg    : energy monitoring card
+- bedroom.jpg, kitchen.jpg : interactive demo rooms (living.jpg, office.jpg, villa-night.jpg are also used by the demo)

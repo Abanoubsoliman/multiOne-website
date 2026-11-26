@@ -11,9 +11,9 @@ const body = Inter({ subsets: ['latin'], variable: '--font-body' });
 const ar = Cairo({ subsets: ['arabic', 'latin'], variable: '--font-ar' });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://multione.com'),
+  metadataBase: new URL('https://multi-one-website.vercel.app'),
   title: { default: 'MultiOne | KNX Smart Home & Smart Office, Egypt', template: '%s | MultiOne' },
-  description: 'MultiOne designs, programs and commissions KNX smart homes, smart offices and ELV systems in Egypt.',
+  description: 'The MultiOne: one stop shop for automation and networking, residential and commercial. Cairo and Dubai.',
   keywords: ['KNX', 'smart home Egypt', 'smart office', 'ELV', 'home automation', 'Cairo', 'ملتي وان', 'بيت ذكي'],
   openGraph: { title: 'MultiOne | Smart buildings, engineered in Cairo', description: 'KNX smart homes, smart offices and ELV systems in Egypt.', url: 'https://multione.com', siteName: 'MultiOne', locale: 'en_US', type: 'website' },
   robots: { index: true, follow: true },

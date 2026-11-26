@@ -17,7 +17,7 @@ export default function Footer() {
           <div>
             <h4 className="eyebrow mb-5">{t.footer.links}</h4>
             <ul className="space-y-3 text-fg/70">
-              {[['/smart-home', t.nav.smartHome], ['/smart-office', t.nav.smartOffice], ['/services', t.nav.services], ['/portfolio', t.nav.portfolio], ['/about', t.nav.about]].map(([h, l]) => (
+              {[['/smart-home', t.nav.smartHome], ['/smart-office', t.nav.smartOffice], ['/services', t.nav.services], ['/about', t.nav.about]].map(([h, l]) => (
                 <li key={h}><Link href={h} className="transition hover:text-volt">{l}</Link></li>
               ))}
             </ul>
@@ -25,9 +25,13 @@ export default function Footer() {
           <div>
             <h4 className="eyebrow mb-5">{t.footer.contact}</h4>
             <ul className="space-y-3 text-fg/70">
+              <li className="text-fg/40 text-xs uppercase tracking-widest">{t.contact.cairo}</li>
               <li><a href={SITE.phoneHref} className="hover:text-volt" dir="ltr">{SITE.phone}</a></li>
+              <li className="pt-2 text-fg/40 text-xs uppercase tracking-widest">{t.contact.dubai}</li>
+              <li><a href={SITE.dubaiPhoneHref} className="hover:text-volt" dir="ltr">{SITE.dubaiPhone}</a></li>
               <li><a href={`mailto:${SITE.email}`} className="hover:text-volt">{SITE.email}</a></li>
-              <li>{lang === 'ar' ? SITE.addressAr : SITE.address}</li>
+              <li className="pt-2">{lang === 'ar' ? SITE.addressAr : SITE.address}</li>
+              <li><a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-volt">Instagram @the_multione_</a></li>
             </ul>
           </div>
         </div>
