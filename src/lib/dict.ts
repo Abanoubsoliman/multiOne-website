@@ -1,7 +1,7 @@
 export type Lang = 'en' | 'ar';
 
 const en = {
-  nav: { home: 'Home', smartHome: 'Smart Home', smartOffice: 'Smart Office', services: 'Services', about: 'About', contact: 'Contact', cta: 'Get a quote' },
+  nav: { home: 'Home', smartHome: 'Smart Home', smartOffice: 'Smart Office', services: 'Services', about: 'About', contact: 'Contact', demo: 'Demo', cta: 'Get a quote' },
   hero: {
     eyebrow: 'KNX · ELV · Smart Building Integrators',
     l1: 'We make buildings',
@@ -106,7 +106,7 @@ const en = {
 };
 
 const ar: typeof en = {
-  nav: { home: 'الرئيسية', smartHome: 'البيت الذكي', smartOffice: 'المكتب الذكي', services: 'خدماتنا', about: 'من نحن', contact: 'تواصل معنا', cta: 'اطلب عرض سعر' },
+  nav: { home: 'الرئيسية', smartHome: 'البيت الذكي', smartOffice: 'المكتب الذكي', services: 'خدماتنا', about: 'من نحن', contact: 'تواصل معنا', demo: 'جرّب بنفسك', cta: 'اطلب عرض سعر' },
   hero: {
     eyebrow: 'KNX · ELV · أنظمة المباني الذكية',
     l1: 'بنخلي المباني',
