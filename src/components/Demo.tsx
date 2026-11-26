@@ -86,7 +86,7 @@ export default function Demo() {
                 <div>
                   <div className="font-display text-3xl">{d.rooms[room]}</div>
                   <div className="mt-1 text-sm text-fg/70">
-                    {!garden && <>{r.ac ? `${r.temp}°C` : '—'} · </>}{r.on ? `${d.lights} ${r.dim}%` : `${d.lights} ${d.off}`}
+                    {!garden && <>{r.ac ? `${r.temp}\u00B0C` : '—'} · </>}{r.on ? `${d.lights} ${r.dim}%` : `${d.lights} ${d.off}`}
                   </div>
                 </div>
                 <span className={`flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold ${armed ? 'border-red-400/60 text-red-300' : 'border-fg/20 text-fg/60'}`}>
@@ -105,7 +105,7 @@ export default function Demo() {
               <div className="grid grid-cols-5 gap-2">
                 {(Object.keys(IMG) as RoomKey[]).map((k) => (
                   <button key={k} onClick={() => setRoom(k)} className={`flex flex-col items-center gap-1 rounded-xl border px-1 py-3 text-[11px] transition ${room === k ? 'border-volt bg-brand/20 text-fg' : 'border-line text-fg/60 hover:border-fg/30'}`}>
-                    <Icon k={k} /><span className="max-w-full truncate">{d.rooms[k]}</span>
+                    <Icon k={k} /><span className="max-w-full text-center text-[10px] leading-tight sm:text-[11px]">{d.rooms[k]}</span>
                   </button>
                 ))}
               </div>
@@ -122,7 +122,7 @@ export default function Demo() {
                       <input type="range" min={0} max={100} value={r.shut} onChange={(e) => set({ shut: +e.target.value })} className="mt-3 w-full accent-[#3AA0E8]" />
                     </div>
                     <div>
-                      <div className="flex items-center justify-between"><span>{d.climate} {r.ac && <span className="text-fg/60">· {r.temp}°C</span>}</span><Toggle on={r.ac} onClick={() => set({ ac: !r.ac })} label={d.climate} /></div>
+                      <div className="flex items-center justify-between"><span>{d.climate} {r.ac && <span dir="ltr" className="text-fg/60">· {r.temp}°C</span>}</span><Toggle on={r.ac} onClick={() => set({ ac: !r.ac })} label={d.climate} /></div>
                       <div className="mt-3 flex items-center gap-3">
                         <button disabled={!r.ac} onClick={() => set({ temp: Math.max(18, r.temp - 1) })} className="h-9 w-9 rounded-full border border-line text-lg disabled:opacity-30">−</button>
                         <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-fg/10"><div className="h-full bg-gradient-to-r from-cyan-300 to-orange-300 transition-all" style={{ width: r.ac ? `${((r.temp - 18) / 10) * 100}%` : 0 }} /></div>

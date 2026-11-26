@@ -14,7 +14,7 @@ export default function Navbar() {
   useEffect(() => { const f = () => { setScrolled(window.scrollY > 30); const h = document.documentElement.scrollHeight - window.innerHeight; setProg(h > 0 ? window.scrollY / h : 0); }; f(); window.addEventListener('scroll', f); return () => window.removeEventListener('scroll', f); }, []);
   useEffect(() => setOpen(false), [path]);
   const links = [
-    ['/smart-home', t.nav.smartHome], ['/smart-office', t.nav.smartOffice], ['/services', t.nav.services], ['/#demo', 'Demo'],
+    ['/smart-home', t.nav.smartHome], ['/smart-office', t.nav.smartOffice], ['/services', t.nav.services], ['/#demo', t.nav.demo],
     ['/about', t.nav.about],
   ];
   return (
