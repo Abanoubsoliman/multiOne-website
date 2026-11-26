@@ -14,9 +14,9 @@ export default function Page() {
       <PageHero eyebrow={c.eyebrow} title={c.title} sub={c.sub} />
       <section className="container-x pb-20">
         <Reveal>
-          <div className="relative h-[60vh] min-h-[320px] overflow-hidden rounded-3xl">
+          <div className="theme-dark relative h-[60vh] min-h-[320px] overflow-hidden rounded-3xl">
             <Image src="/images/stock/office.jpg" alt={c.title} fill priority sizes="100vw" className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-bg0/50 to-transparent" />
           </div>
         </Reveal>
       </section>

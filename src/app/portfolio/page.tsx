@@ -17,13 +17,13 @@ export default function Portfolio() {
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {p.items.map((it, i) => (
             <Reveal key={it.t} delay={(i % 3) * 90}>
-              <div className="card glow-card group relative flex h-96 flex-col justify-between p-8" data-cursor>
-                <Image src={`/images/stock/${imgs[i]}.jpg`} alt={it.t} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover opacity-50 transition duration-700 group-hover:scale-105 group-hover:opacity-70" />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+              <div className="card glow-card theme-dark group relative flex h-96 flex-col justify-between p-8" data-cursor>
+                <Image src={`/images/stock/${imgs[i]}.jpg`} alt={it.t} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover opacity-60 transition duration-700 group-hover:scale-105 group-hover:opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-bg0 via-bg0/40 to-transparent" />
                 <span className="relative text-xs uppercase tracking-widest text-volt">{it.c}</span>
                 <div className="relative">
                   <h3 className="h-display text-3xl transition-transform group-hover:-translate-y-1">{it.t}</h3>
-                  <p className="mt-2 text-white/55">{it.d}</p>
+                  <p className="mt-2 text-fg/55">{it.d}</p>
                 </div>
               </div>
             </Reveal>

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: { title: 'MultiOne | Smart buildings, engineered in Cairo', description: 'KNX smart homes, smart offices and ELV systems in Egypt.', url: 'https://multione.com', siteName: 'MultiOne', locale: 'en_US', type: 'website' },
   robots: { index: true, follow: true },
 };
-export const viewport: Viewport = { width: 'device-width', initialScale: 1, themeColor: '#07080c' };
+export const viewport: Viewport = { width: 'device-width', initialScale: 1, themeColor: '#051523' };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

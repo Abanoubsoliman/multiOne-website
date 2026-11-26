@@ -2,7 +2,7 @@
 
 Marketing site for MultiOne, a KNX / ELV / smart building integrator in Cairo.
 
-Next.js 14 (App Router, static export) + TypeScript + Tailwind. Bilingual (English / Arabic with RTL), animated hero, custom cursor, scroll reveals.
+Next.js 14 (App Router, static export) + TypeScript + Tailwind. Brand colors come from the logo: blue #0A75BB, greys #71706F / #3D3D3C. Bilingual (English / Arabic with RTL), animated hero, custom cursor, scroll reveals.
 
 ## Run
 

@@ -4,19 +4,19 @@ export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen pt-36 pb-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold text-white mb-8">Privacy Policy</h1>
+        <h1 className="text-4xl font-bold text-fg mb-8">Privacy Policy</h1>
         
         <div className="prose prose-lg max-w-none">
-          <p className="text-white/60 mb-8">
+          <p className="text-fg/60 mb-8">
             Last updated: {new Date().toLocaleDateString()}
           </p>
 
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">1. Information We Collect</h2>
-            <p className="text-white/60 mb-4">
+            <h2 className="text-2xl font-bold text-fg mb-4">1. Information We Collect</h2>
+            <p className="text-fg/60 mb-4">
               We collect information that you provide directly to us, including:
             </p>
-            <ul className="list-disc pl-6 text-white/60 mb-4">
+            <ul className="list-disc pl-6 text-fg/60 mb-4">
               <li>Name and contact information</li>
               <li>Address and property details</li>
               <li>Device information and preferences</li>
@@ -25,11 +25,11 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">2. How We Use Your Information</h2>
-            <p className="text-white/60 mb-4">
+            <h2 className="text-2xl font-bold text-fg mb-4">2. How We Use Your Information</h2>
+            <p className="text-fg/60 mb-4">
               We use the information we collect to:
             </p>
-            <ul className="list-disc pl-6 text-white/60 mb-4">
+            <ul className="list-disc pl-6 text-fg/60 mb-4">
               <li>Provide and maintain our services</li>
               <li>Process your requests and transactions</li>
               <li>Send you technical notices and support messages</li>
@@ -38,11 +38,11 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">3. Information Sharing</h2>
-            <p className="text-white/60 mb-4">
+            <h2 className="text-2xl font-bold text-fg mb-4">3. Information Sharing</h2>
+            <p className="text-fg/60 mb-4">
               We do not sell or rent your personal information to third parties. We may share your information with:
             </p>
-            <ul className="list-disc pl-6 text-white/60 mb-4">
+            <ul className="list-disc pl-6 text-fg/60 mb-4">
               <li>Service providers who assist in our operations</li>
               <li>Professional advisors and consultants</li>
               <li>Law enforcement when required by law</li>
@@ -50,18 +50,18 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">4. Data Security</h2>
-            <p className="text-white/60 mb-4">
+            <h2 className="text-2xl font-bold text-fg mb-4">4. Data Security</h2>
+            <p className="text-fg/60 mb-4">
               We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.
             </p>
           </section>
 
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">5. Your Rights</h2>
-            <p className="text-white/60 mb-4">
+            <h2 className="text-2xl font-bold text-fg mb-4">5. Your Rights</h2>
+            <p className="text-fg/60 mb-4">
               You have the right to:
             </p>
-            <ul className="list-disc pl-6 text-white/60 mb-4">
+            <ul className="list-disc pl-6 text-fg/60 mb-4">
               <li>Access your personal information</li>
               <li>Correct inaccurate information</li>
               <li>Request deletion of your information</li>
@@ -70,12 +70,12 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">6. Contact Us</h2>
-            <p className="text-white/60 mb-4">
+            <h2 className="text-2xl font-bold text-fg mb-4">6. Contact Us</h2>
+            <p className="text-fg/60 mb-4">
               If you have any questions about this Privacy Policy, please contact us at:
             </p>
-            <div className="bg-secondary-50 p-6 rounded-lg">
-              <p className="text-white/60">
+            <div className="bg-bg1 border border-line p-6 rounded-lg">
+              <p className="text-fg/60">
                 Email: privacy@multione.com<br />
                 Phone: +20 123 456 7890<br />
                 Address: Cairo, Egypt
@@ -83,10 +83,10 @@ export default function PrivacyPolicy() {
             </div>
           </section>
 
-          <div className="mt-12 pt-8 border-t border-secondary-200">
+          <div className="mt-12 pt-8 border-t border-line">
             <Link
               href="/contact"
-              className="inline-block bg-volt text-white px-6 py-3 rounded-lg hover:bg-volt transition-colors"
+              className="inline-block bg-volt text-fg px-6 py-3 rounded-lg hover:bg-volt transition-colors"
             >
               Contact Us
             </Link>
