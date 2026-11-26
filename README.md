@@ -1,60 +1,25 @@
 # MultiOne Website
 
-A modern business website built with Next.js, TypeScript, and Tailwind CSS.
+Marketing site for MultiOne, a KNX / ELV / smart building integrator in Cairo.
 
-## Features
+Next.js 14 (App Router, static export) + TypeScript + Tailwind. Bilingual (English / Arabic with RTL), animated hero, custom cursor, scroll reveals.
 
-- 🎨 Modern and responsive design
-- 📱 Mobile-friendly interface
-- ⚡ Fast performance with Next.js
-- 🎯 TypeScript for better development experience
-- 🎨 Tailwind CSS for styling
-- 📧 Contact form with EmailJS integration
+## Run
 
-## Pages
-
-- Home
-- About
-- Services
-- Projects
-- Contact
-
-## Getting Started
-
-1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/multione-website.git
-```
-
-2. Install dependencies:
-```bash
-cd multione-website
 npm install
+npm run dev      # http://localhost:3000
+npm run build    # static site in ./out
 ```
 
-3. Run the development server:
-```bash
-npm run dev
-```
+## Contact form (EmailJS)
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+Copy `.env.example` to `.env.local` and fill in your EmailJS service, template and public key.
 
-## Building for Production
+## Content
 
-```bash
-npm run build
-npm start
-```
+- Text (EN/AR): `src/lib/dict.ts`
+- Company details: `src/lib/site.ts`. The three `XX+` stats are placeholders: set real numbers in `STATS` (and `placeholder: false`).
+- Photos: `public/images/stock/` are stand-in stock photos. See the README there for how to swap in real project photos.
 
-## Technologies Used
-
-- Next.js 14
-- TypeScript
-- Tailwind CSS
-- EmailJS
-
-## Contact
-
-- Address: 7 Abdel Moneim Fawzy Street, New Nozha, Cairo, Egypt
-- Phone: +20 121 119 7228
-- Email: info@multione.com
+Contact: 7 Abdel Moneim Fawzy Street, New Nozha, Cairo. info@multione.com
