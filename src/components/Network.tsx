@@ -33,13 +33,13 @@ export default function Network() {
         for (let j = i + 1; j < pts.length; j++) {
           const d = Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y);
           if (d < 130) {
-            ctx.strokeStyle = `rgba(245,179,1,${(1 - d / 130) * 0.35})`;
+            ctx.strokeStyle = `rgba(58,160,232,${(1 - d / 130) * 0.45})`;
             ctx.lineWidth = 1;
             ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y); ctx.stroke();
           }
         }
         const dm = Math.hypot(pts[i].x - mouse.x, pts[i].y - mouse.y);
-        ctx.fillStyle = dm < 160 ? '#ffd45e' : 'rgba(255,255,255,0.55)';
+        ctx.fillStyle = dm < 160 ? '#7cc4f5' : 'rgba(255,255,255,0.55)';
         ctx.beginPath(); ctx.arc(pts[i].x, pts[i].y, dm < 160 ? 3 : 1.8, 0, Math.PI * 2); ctx.fill();
       }
       raf = requestAnimationFrame(draw);

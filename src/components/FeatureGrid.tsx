@@ -9,7 +9,7 @@ export default function FeatureGrid({ items, cols = 3 }: { items: { t: string; d
           <div className="card glow-card h-full p-8" data-cursor>
             <div className="font-display text-sm text-volt/80">{String(i + 1).padStart(2, '0')}</div>
             <h3 className="font-display mt-6 text-xl font-semibold">{it.t}</h3>
-            <p className="mt-3 text-white/55">{it.d}</p>
+            <p className="mt-3 text-fg/55">{it.d}</p>
           </div>
         </Reveal>
       ))}

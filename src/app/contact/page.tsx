@@ -29,7 +29,7 @@ export default function Contact() {
       setS('err');
     }
   };
-  const field = 'w-full rounded-xl border border-ink-line bg-ink-2 px-5 py-4 text-white placeholder-white/30 outline-none transition focus:border-volt';
+  const field = 'w-full rounded-xl border border-line bg-bg1 px-5 py-4 text-fg placeholder-fg/35 outline-none transition focus:border-volt';
   return (
     <>
       <PageHero eyebrow={c.eyebrow} title={c.title} />
@@ -42,7 +42,7 @@ export default function Contact() {
                 {h ? <a href={h as string} className="text-xl hover:text-volt" dir="ltr">{v}</a> : <p className="text-xl">{v}</p>}
               </div>
             ))}
-            <p className="text-white/50">{c.hours}</p>
+            <p className="text-fg/50">{c.hours}</p>
           </div>
         </Reveal>
         <Reveal delay={150} className="lg:col-span-3">

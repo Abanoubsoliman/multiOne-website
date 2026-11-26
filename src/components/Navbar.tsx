@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { useLang } from '@/lib/i18n';
 
 export default function Navbar() {
@@ -9,25 +10,27 @@ export default function Navbar() {
   const path = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  useEffect(() => { const f = () => setScrolled(window.scrollY > 30); f(); window.addEventListener('scroll', f); return () => window.removeEventListener('scroll', f); }, []);
+  const [prog, setProg] = useState(0);
+  useEffect(() => { const f = () => { setScrolled(window.scrollY > 30); const h = document.documentElement.scrollHeight - window.innerHeight; setProg(h > 0 ? window.scrollY / h : 0); }; f(); window.addEventListener('scroll', f); return () => window.removeEventListener('scroll', f); }, []);
   useEffect(() => setOpen(false), [path]);
   const links = [
     ['/smart-home', t.nav.smartHome], ['/smart-office', t.nav.smartOffice], ['/services', t.nav.services],
     ['/portfolio', t.nav.portfolio], ['/about', t.nav.about],
   ];
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled || open ? 'bg-ink/80 backdrop-blur-xl border-b border-ink-line' : ''}`}>
+    <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled || open ? 'bg-bg0/85 backdrop-blur-xl border-b border-line' : 'theme-dark'}`}>
       <div className="container-x flex h-20 items-center justify-between">
-        <Link href="/" className="font-display text-2xl font-bold tracking-tight">
-          Multi<span className="text-volt">One</span>
+        <Link href="/" className="flex items-center gap-3" aria-label="MultiOne">
+          <Image src={scrolled || open ? "/images/logo-mark.png" : "/images/logo-mark-white.png"} alt="" width={44} height={34} className="h-8 w-auto" priority />
+          <span className="font-display text-lg font-bold leading-none tracking-tight">THE MULTI<span className="font-light">ONE</span></span>
         </Link>
         <nav className="hidden items-center gap-8 lg:flex">
           {links.map(([h, l]) => (
-            <Link key={h} href={h} className={`relative text-sm transition-colors hover:text-volt ${path === h ? 'text-volt' : 'text-white/70'}`}>{l}</Link>
+            <Link key={h} href={h} className={`relative text-sm transition-colors hover:text-volt ${path === h ? 'text-volt' : 'text-fg/70'}`}>{l}</Link>
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <button onClick={toggle} aria-label="Switch language" className="rounded-full border border-white/15 px-3 py-1.5 text-xs font-semibold text-white/80 transition hover:border-volt hover:text-volt">
+          <button onClick={toggle} aria-label="Switch language" className="rounded-full border border-fg/20 px-3 py-1.5 text-xs font-semibold text-fg/80 transition hover:border-volt hover:text-volt">
             {lang === 'en' ? 'عربي' : 'EN'}
           </button>
           <Link href="/contact" className="btn btn-primary hidden !py-2.5 sm:inline-flex">{t.nav.cta}</Link>
@@ -38,10 +41,11 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+      <div className="absolute bottom-0 start-0 h-[2px] bg-volt" style={{ width: `${prog * 100}%` }} />
       {open && (
         <div className="container-x flex flex-col gap-1 pb-6 lg:hidden">
           {[...links, ['/contact', t.nav.contact]].map(([h, l]) => (
-            <Link key={h} href={h} className="border-b border-ink-line py-3 text-lg font-display">{l}</Link>
+            <Link key={h} href={h} className="border-b border-line py-3 text-lg font-display">{l}</Link>
           ))}
         </div>
       )}

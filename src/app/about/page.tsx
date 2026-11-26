@@ -12,13 +12,13 @@ export default function About() {
     <>
       <PageHero eyebrow={a.eyebrow} title={a.title} />
       <section className="container-x grid gap-10 pb-24 lg:grid-cols-2">
-        <Reveal><p className="text-xl text-white/70">{a.p1}</p></Reveal>
-        <Reveal delay={120}><p className="text-xl text-white/70">{a.p2}</p></Reveal>
+        <Reveal><p className="text-xl text-fg/70">{a.p1}</p></Reveal>
+        <Reveal delay={120}><p className="text-xl text-fg/70">{a.p2}</p></Reveal>
       </section>
       <section className="container-x grid gap-5 pb-24 md:grid-cols-2">
         {[a.vision, a.mission].map((x, i) => (
           <Reveal key={x.t} delay={i * 120}>
-            <div className="card glow-card h-full p-10" data-cursor><h2 className="h-display text-3xl text-volt">{x.t}</h2><p className="mt-4 text-lg text-white/65">{x.d}</p></div>
+            <div className="card glow-card h-full p-10" data-cursor><h2 className="h-display text-3xl text-volt">{x.t}</h2><p className="mt-4 text-lg text-fg/65">{x.d}</p></div>
           </Reveal>
         ))}
       </section>
