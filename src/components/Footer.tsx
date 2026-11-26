@@ -1,103 +1,41 @@
+'use client';
 import Link from 'next/link';
-import Image from 'next/image';
+import { useLang } from '@/lib/i18n';
+import { SITE } from '@/lib/site';
 
 export default function Footer() {
+  const { t, lang } = useLang();
   return (
-    <footer className="bg-secondary-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="space-y-4">
-            <div className="relative w-64 h-20">
-              <Image
-                src="/images/logo.png"
-                alt="The MultiOne Logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-            <p className="text-secondary-300">
-              Your trusted partner for innovative digital solutions.
-            </p>
-          </div>
-
-          {/* Quick Links */}
+    <footer className="relative overflow-hidden border-t border-ink-line bg-ink-2">
+      <div className="container-x py-20">
+        <div className="grid gap-12 md:grid-cols-3">
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/" className="text-secondary-300 hover:text-primary-400 transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-secondary-300 hover:text-primary-400 transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/smart-home" className="text-secondary-300 hover:text-primary-400 transition-colors">
-                  Smart Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/smart-office" className="text-secondary-300 hover:text-primary-400 transition-colors">
-                  Smart Office
-                </Link>
-              </li>
+            <div className="font-display text-3xl font-bold">Multi<span className="text-volt">One</span></div>
+            <p className="mt-4 max-w-xs text-white/50">{t.footer.tag}</p>
+          </div>
+          <div>
+            <h4 className="eyebrow mb-5">{t.footer.links}</h4>
+            <ul className="space-y-3 text-white/70">
+              {[['/smart-home', t.nav.smartHome], ['/smart-office', t.nav.smartOffice], ['/services', t.nav.services], ['/portfolio', t.nav.portfolio], ['/about', t.nav.about]].map(([h, l]) => (
+                <li key={h}><Link href={h} className="transition hover:text-volt">{l}</Link></li>
+              ))}
             </ul>
           </div>
-
-          {/* Services */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Services</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/smart-home" className="text-secondary-300 hover:text-primary-400 transition-colors">
-                  Smart Home Solutions
-                </Link>
-              </li>
-              <li>
-                <Link href="/smart-office" className="text-secondary-300 hover:text-primary-400 transition-colors">
-                  Smart Office Solutions
-                </Link>
-              </li>
-              <li>
-                <Link href="/smart-home#security" className="text-secondary-300 hover:text-primary-400 transition-colors">
-                  Security Systems
-                </Link>
-              </li>
-              <li>
-                <Link href="/smart-home#automation" className="text-secondary-300 hover:text-primary-400 transition-colors">
-                  Home Automation
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Contact Us</h4>
-            <ul className="space-y-2 text-secondary-300">
-              <li>7 Abdel Moneim Fawzy Street</li>
-              <li>New Nozha, Cairo, Egypt</li>
-              <li>Phone: +20 121 119 7228</li>
-              <li>Email: info@multione.com</li>
-              <li className="mt-4">
-                <p className="font-medium text-white">Business Hours</p>
-                <p>Monday - Thursday: 9:00 AM - 6:00 PM</p>
-                <p>Saturday: 10:00 AM - 4:00 PM</p>
-                <p>Friday: Closed</p>
-              </li>
+            <h4 className="eyebrow mb-5">{t.footer.contact}</h4>
+            <ul className="space-y-3 text-white/70">
+              <li><a href={SITE.phoneHref} className="hover:text-volt" dir="ltr">{SITE.phone}</a></li>
+              <li><a href={`mailto:${SITE.email}`} className="hover:text-volt">{SITE.email}</a></li>
+              <li>{lang === 'ar' ? SITE.addressAr : SITE.address}</li>
             </ul>
           </div>
         </div>
-
-        <div className="border-t border-secondary-800 mt-12 pt-8 text-center text-secondary-400">
-          <p>&copy; {new Date().getFullYear()} MultiOne. All rights reserved.</p>
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-ink-line pt-8 text-sm text-white/40 sm:flex-row">
+          <span>© {new Date().getFullYear()} MultiOne. {t.footer.rights}</span>
+          <span className="flex gap-6"><Link href="/privacy-policy" className="hover:text-volt">{t.footer.privacy}</Link><Link href="/terms" className="hover:text-volt">{t.footer.terms}</Link></span>
         </div>
       </div>
+      <div className="pointer-events-none select-none text-center font-display text-[22vw] font-bold leading-none text-outline opacity-30" aria-hidden>MULTIONE</div>
     </footer>
   );
-} 
+}

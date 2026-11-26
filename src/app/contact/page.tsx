@@ -1,309 +1,63 @@
 'use client';
-
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import Link from 'next/link';
+import PageHero from '@/components/PageHero';
+import Reveal from '@/components/Reveal';
+import { useLang } from '@/lib/i18n';
+import { SITE } from '@/lib/site';
+
+const SERVICE = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+const TEMPLATE = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+const KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
-  });
+  const { t, lang } = useLang();
+  const c = t.contact;
+  const [f, setF] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
+  const [s, setS] = useState<'idle' | 'loading' | 'ok' | 'err'>('idle');
+  const on = (k: keyof typeof f) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setF({ ...f, [k]: e.target.value });
 
-  const [status, setStatus] = useState({
-    loading: false,
-    success: false,
-    error: false,
-    message: '',
-  });
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus({ loading: true, success: false, error: false, message: '' });
-
+    setS('loading');
     try {
-      await emailjs.send(
-        'service_multione', // Service ID
-        'template_multione', // Template ID
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          phone: formData.phone,
-          subject: formData.subject,
-          message: formData.message,
-        },
-        'public_key_multione' // Public Key
-      );
-
-      setStatus({
-        loading: false,
-        success: true,
-        error: false,
-        message: 'Your message has been sent successfully! We will contact you soon.',
-      });
-
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
-      });
-    } catch (error) {
-      setStatus({
-        loading: false,
-        success: false,
-        error: true,
-        message: 'Sorry, there was an error sending your message. Please try again.',
-      });
+      if (!SERVICE || !TEMPLATE || !KEY) throw new Error('EmailJS env vars missing');
+      await emailjs.send(SERVICE, TEMPLATE, { from_name: f.name, from_email: f.email, phone: f.phone, subject: f.subject, message: f.message }, KEY);
+      setS('ok');
+      setF({ name: '', email: '', phone: '', subject: '', message: '' });
+    } catch {
+      setS('err');
     }
   };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
+  const field = 'w-full rounded-xl border border-ink-line bg-ink-2 px-5 py-4 text-white placeholder-white/30 outline-none transition focus:border-volt';
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">Contact Us</h1>
-            <p className="text-xl text-primary-100 max-w-3xl mx-auto">
-              Get in touch with us to discuss your project or ask any questions.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div>
-              <h2 className="text-2xl font-bold mb-6 text-secondary-900">Send us a Message</h2>
-              {status.message && (
-                <div
-                  className={`p-4 mb-6 rounded-md ${
-                    status.success
-                      ? 'bg-green-100 text-green-700'
-                      : status.error
-                      ? 'bg-red-100 text-red-700'
-                      : ''
-                  }`}
-                >
-                  {status.message}
-                </div>
-              )}
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-secondary-700 mb-1"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 border border-secondary-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-secondary-700 mb-1"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 border border-secondary-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-sm font-medium text-secondary-700 mb-1"
-                  >
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-secondary-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium text-secondary-700 mb-1"
-                  >
-                    Subject
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 border border-secondary-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="project">Project Discussion</option>
-                    <option value="support">Technical Support</option>
-                    <option value="partnership">Partnership Opportunity</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-secondary-700 mb-1"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={4}
-                    className="w-full px-4 py-2 border border-secondary-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={status.loading}
-                  className="w-full bg-primary-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-primary-700 transition-colors disabled:bg-primary-400"
-                >
-                  {status.loading ? 'Sending...' : 'Send Message'}
-                </button>
-              </form>
-            </div>
-
-            {/* Contact Information */}
-            <div className="space-y-8">
-              <div className="bg-white rounded-lg shadow-lg p-8">
-                <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <svg
-                      className="h-6 w-6 text-primary-600 mt-1 mr-3"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                    <div>
-                      <h3 className="font-semibold">Address</h3>
-                      <p className="text-gray-600">
-                        7 Abdel Moneim Fawzy Street
-                        <br />
-                        New Nozha, Cairo, Egypt
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <svg
-                      className="h-6 w-6 text-primary-600 mt-1 mr-3"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                      />
-                    </svg>
-                    <div>
-                      <h3 className="font-semibold">Phone</h3>
-                      <p className="text-gray-600">+20 121 119 7228</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <svg
-                      className="h-6 w-6 text-primary-600 mt-1 mr-3"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                    <div>
-                      <h3 className="font-semibold">Email</h3>
-                      <p className="text-gray-600">info@multione.com</p>
-                    </div>
-                  </div>
-                </div>
+    <>
+      <PageHero eyebrow={c.eyebrow} title={c.title} />
+      <section className="container-x grid gap-12 pb-28 lg:grid-cols-5">
+        <Reveal className="lg:col-span-2">
+          <div className="space-y-8">
+            {[[c.phone, SITE.phone, SITE.phoneHref], [c.email, SITE.email, `mailto:${SITE.email}`], [c.address, lang === 'ar' ? SITE.addressAr : SITE.address, undefined]].map(([l, v, h]) => (
+              <div key={l as string}>
+                <div className="eyebrow mb-2">{l}</div>
+                {h ? <a href={h as string} className="text-xl hover:text-volt" dir="ltr">{v}</a> : <p className="text-xl">{v}</p>}
               </div>
-
-              {/* Business Hours */}
-              <div className="bg-white rounded-lg shadow-lg p-8">
-                <h2 className="text-2xl font-bold mb-6">Business Hours</h2>
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <p className="text-secondary-600">Monday - Thursday: 9:00 AM - 6:00 PM</p>
-                    <p className="text-secondary-600">Saturday: 10:00 AM - 4:00 PM</p>
-                    <p className="text-secondary-600">Friday: Closed</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
+            <p className="text-white/50">{c.hours}</p>
           </div>
-        </div>
+        </Reveal>
+        <Reveal delay={150} className="lg:col-span-3">
+          <form onSubmit={submit} className="grid gap-4 sm:grid-cols-2">
+            <input required className={field} placeholder={c.name} value={f.name} onChange={on('name')} />
+            <input required type="email" className={field} placeholder={c.email} value={f.email} onChange={on('email')} />
+            <input className={field} placeholder={c.phone} value={f.phone} onChange={on('phone')} />
+            <input required className={field} placeholder={c.subject} value={f.subject} onChange={on('subject')} />
+            <textarea required rows={6} className={`${field} sm:col-span-2`} placeholder={c.message} value={f.message} onChange={on('message')} />
+            <button disabled={s === 'loading'} className="btn btn-primary sm:col-span-2 disabled:opacity-60">{s === 'loading' ? c.sending : c.send}</button>
+            {s === 'ok' && <p className="text-emerald-400 sm:col-span-2">{c.ok}</p>}
+            {s === 'err' && <p className="text-red-400 sm:col-span-2">{c.err}</p>}
+          </form>
+        </Reveal>
       </section>
-    </div>
+    </>
   );
-} 
+}

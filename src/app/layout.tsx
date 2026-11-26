@@ -1,64 +1,35 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import type { Metadata, Viewport } from 'next';
+import { Space_Grotesk, Inter, Cairo } from 'next/font/google';
+import './globals.css';
+import { LangProvider } from '@/lib/i18n';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import Cursor from '@/components/Cursor';
 
-const inter = Inter({ subsets: ["latin"] });
+const display = Space_Grotesk({ subsets: ['latin'], variable: '--font-display' });
+const body = Inter({ subsets: ['latin'], variable: '--font-body' });
+const ar = Cairo({ subsets: ['arabic', 'latin'], variable: '--font-ar' });
 
 export const metadata: Metadata = {
-  title: "The MultiOne - Smart Home & Office Solutions",
-  description: "Leading provider of smart home and office automation solutions in Egypt. We offer integrated systems for security, comfort, and energy efficiency.",
-  keywords: "smart home, smart office, home automation, KNX, Control4, security systems, Egypt",
-  authors: [{ name: "The MultiOne" }],
-  openGraph: {
-    title: "The MultiOne - Smart Home & Office Solutions",
-    description: "Leading provider of smart home and office automation solutions in Egypt",
-    url: "https://multione.com",
-    siteName: "The MultiOne",
-    images: [
-      {
-        url: "/images/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "The MultiOne Smart Solutions",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "The MultiOne - Smart Home & Office Solutions",
-    description: "Leading provider of smart home and office automation solutions in Egypt",
-    images: ["/images/twitter-image.jpg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-  },
-  verification: {
-    google: "your-google-site-verification",
-  },
+  metadataBase: new URL('https://multione.com'),
+  title: { default: 'MultiOne | KNX Smart Home & Smart Office, Egypt', template: '%s | MultiOne' },
+  description: 'MultiOne designs, programs and commissions KNX smart homes, smart offices and ELV systems in Egypt.',
+  keywords: ['KNX', 'smart home Egypt', 'smart office', 'ELV', 'home automation', 'Cairo', 'ملتي وان', 'بيت ذكي'],
+  openGraph: { title: 'MultiOne | Smart buildings, engineered in Cairo', description: 'KNX smart homes, smart offices and ELV systems in Egypt.', url: 'https://multione.com', siteName: 'MultiOne', locale: 'en_US', type: 'website' },
+  robots: { index: true, follow: true },
 };
+export const viewport: Viewport = { width: 'device-width', initialScale: 1, themeColor: '#07080c' };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} min-h-screen bg-white dark:bg-secondary-900 text-secondary-900 dark:text-white`}>
-        <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+    <html lang="en" suppressHydrationWarning className={`${display.variable} ${body.variable} ${ar.variable}`}>
+      <body className="min-h-screen">
+        <LangProvider>
+          <Cursor />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </LangProvider>
       </body>
     </html>
   );

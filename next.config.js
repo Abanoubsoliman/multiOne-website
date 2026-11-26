@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    domains: ['images.unsplash.com', 'upload.wikimedia.org', 'logos-world.net', 'cdn.jsdelivr.net', 'brandslogos.com'],
-  },
+  output: 'export',
+  images: { unoptimized: true },
 };
-
-module.exports = nextConfig; 
+module.exports = nextConfig;
